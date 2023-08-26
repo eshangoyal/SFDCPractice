@@ -30,6 +30,7 @@ fetchAccountData(response){
 let data = response.data;
 let error = response.error;
 
+let testCommit;
 if(data){
    data.forEach(a=>{
       this.accountArray.push({
