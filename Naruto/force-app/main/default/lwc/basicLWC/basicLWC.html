@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="---Basic LWC---">
+        <div class="slds-p-around_small" style="min-width: 30rem;">
+            <lightning-input label="What is your name?" value={name} onchange={updateName}></lightning-input>
+        </div>
+        <br/>
+        Hi {name}, welcome to to your basic LWC 
+        <lightning-input label="Give Account Id To Be Deleted" value={accountIdToBeDeleted} onchange={updateAccountIdToBeDeleted}></lightning-input>
+        <lightning-button-icon icon-name="utility:delete" alternative-text="delete" onclick={handleDeleteAccount}></lightning-button-icon>
+        <lightning-button-icon icon-name="utility:account" alternative-text="account" onclick={handleFetchAccountButton}></lightning-button-icon>
+    </lightning-card>
+</template>

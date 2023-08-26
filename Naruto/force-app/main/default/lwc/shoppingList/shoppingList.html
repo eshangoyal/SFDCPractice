@@ -1,0 +1,37 @@
+<template>
+<lightning-card title="Shooping List" style="width: 100%;">
+<lightning-button-icon icon-name="utility:sync" alternative-text="sync" slot="actions" style="padding-left:2rem"></lightning-button-icon>
+<lightning-layout>
+<lightning-layout-item padding="around-small" size="12">
+    <ul class="slds-has-dividers_around-space">
+        
+        <template for:each={shoppingList} for:item="currentItem">
+            <li class="slds-item" key={currentItem.recordId}>
+                <lightning-layout vertical-align="center" horizontal-align="spread">
+                    <lightning-layout-item padding="horizontal-small">
+                        {currentItem.item}
+                    </lightning-layout-item>
+                    <lightning-layout-item>
+                        <lightning-button-icon icon-name="utility:delete" alternative-text="delete" onclick={handleDelete} name={currentItem.id}></lightning-button-icon>
+                    </lightning-layout-item>
+                </lightning-layout>
+                </li>        
+        </template>
+    </ul>
+</lightning-layout-item>
+</lightning-layout>
+
+<p slot="footer">
+<lightning-layout pull-to-boundary="small">
+
+    <lightning-layout-item padding="horizontal-small" flexibility="grow">
+        <lightning-input type="text" placeholder="Enter item name" value={newItem} required label="new item" variant="label-hidden" onchange={updateNewItem}></lightning-input>            
+    </lightning-layout-item>
+    <lightning-layout-item padding="horizontal-small" flexibility="auto">
+        <lightning-button variant="brand" label="Add" onclick={handleAdd}></lightning-button>
+    </lightning-layout-item>
+
+</lightning-layout>
+</p>
+</lightning-card>
+</template>

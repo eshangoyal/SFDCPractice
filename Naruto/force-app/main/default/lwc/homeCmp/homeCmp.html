@@ -1,0 +1,14 @@
+<template>
+<div class="">
+    <lightning-card  variant="Narrow">
+            <div class="slds-m-around_small">
+                Filter by:
+                <c-filter-section-cmp
+                    onselectedpicklists={handlePicklist} >
+            </c-filter-section-cmp>
+            </div>
+    </lightning-card>
+</div>
+
+<c-list-view-section-cmp selected-controlling-value={selectedControllingValue} selected-dependent-value={selectedDependentValue}></c-list-view-section-cmp>
+</template>
