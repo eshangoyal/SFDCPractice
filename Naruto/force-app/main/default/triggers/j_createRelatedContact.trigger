@@ -8,7 +8,7 @@ trigger j_createRelatedContact on Account (after insert,after update) {
             
             for(Account a:Trigger.new){
                 if(a.Industry!=null){
-                    if(a.Industry=='Banking'){
+                    if(a.Industry=='Banking' && Trigger.oldMap.get(a.Id).Industry!='Banking'){
                         for(Integer i=0;i<a.NumberofLocations__c;i++){
                             Contact cObj = new Contact(
                                 FirstName = 'Contact#'+i,
