@@ -13,7 +13,7 @@ Trigger  createNewTask on Account(after update){
                 Task t = new Task(
                     Subject = 'Industry Change',
                     WhatId=a.Id,
-                    OwnerId=a.OwnerId
+                    WhoId=a.OwnerId
                 );
                 taskTobeCreated.add(t);
             }

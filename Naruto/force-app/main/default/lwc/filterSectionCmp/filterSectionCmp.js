@@ -93,7 +93,17 @@ handleControllingChange(event){
                 }
             );
             this.dispatchEvent(selectedrecordevent);
-
+/*  
+this.dispatchEvent(new CustomEvent("clickevent",{
+    detail: {
+        picklistValue : 'hello'
+    }
+}));
+const selectedrecordevent = new CustomEvent(
+    "selectedpicklists", {
+        detail : { pickListValue : this.selectedValues}
+    }
+); */
         if(this.optionValues.dependent && this.optionValues.dependent.length > 1){
 
         }

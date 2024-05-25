@@ -1,12 +1,23 @@
-//The following trigger describes when the leads are inserted into the database it 
-//would add Doctor prefixed for all lead names. This is applicable for both inserting and updating the lead records.
+//Two fields, Status on child__c object which is a checkbox, child_status__c picklist field on Opportunity. 
+//Whenever a child record is created with checkbox TRUE, update opportunity's picklist as 'Active'.
 
-trigger j_addDoctorPrefixLeads on Lead (before insert, before update) {
-    if(Trigger.isBefore){
-        if(Trigger.isInsert || Trigger.isUpdate){
-            for(Lead l:Trigger.new){
-                l.Salutation = 'Dr.';
-            }
-        }
+Trigger updateCheck on Child__c(after insert){
+
+
+set<Id> oppSet = set<Id>();
+for(Child__c c:trigger.new){
+    if(c.child_status__c == true){
+        oppSet.add(c.OpportunityId)
     }
+}
+List<Opportunity> oppToBeUpdated = new List<Opportunity>();
+List<Opportunity> oList = [Select Id from Opportuinty where Id IN: oppSet];
+
+for(Opportunity o:oList){
+  o.Staus = 'Active';
+  oppToBeUpdated.add(o);
+}
+
+
+    update oppToBeUpdated;
 }
